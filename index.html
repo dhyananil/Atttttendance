@@ -14,16 +14,16 @@
 		</div>
 
 		<div id="mainContent">
-			<label for="totalClasses">Total Classes:</label>
-			<input type="number" id="totalClasses" />
-
 			<label for="classesAttended">Classes Attended:</label>
-			<input type="number" id="classesAttended" />
+			<input id="classesAttended" type="number" min="1" />
+
+			<label for="totalClasses">Total Classes:</label>
+			<input id="totalClasses" type="number" min="0" />
 
 			<label for="percentageRequired">Percentage Required:</label>
-			<input type="number" id="percentageRequired" />
+			<input id="percentageRequired" type="number" min="60" max="90" />
 
-			<button id="calculate">Calculate</button>
+			<button id="button">Calculate</button>
 		</div>
 		<script src="script.js"></script>
 	</body>
