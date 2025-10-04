@@ -1,40 +1,35 @@
-const button = document.getElementById("button");
+const calculateButton = document.getElementById("calculate");
 
-button.addEventListener("click", () => {
-	const classesAttended = parseInt(document.getElementById("classesAttended").value);
-	const totalClasses = parseInt(document.getElementById("totalClasses").value);
-	const percentageRequired = parseInt(document.getElementById("percentageRequired").value);
+calculateButton.addEventListener("click", () => {
+	let classesAttended = parseInt(document.getElementById("classesAttended").value);
+	let totalClasses = parseInt(document.getElementById("totalClasses").value);
+	let percentageRequired = parseFloat(document.getElementById("percentageRequired").value);
 
 	let currentPercentage = (classesAttended / totalClasses) * 100;
+
+	if (classesAttended >= 1 && totalClasses > 0 && percentageRequired >= 60 && percentageRequired <= 90) {
+		if (currentPercentage >= percentageRequired) {
+			let daysToBunk = -1;
+			while (currentPercentage >= percentageRequired) {
+				totalClasses += 1;
+				currentPercentage = (classesAttended / totalClasses) * 100;
+				daysToBunk += 1;
+			}
+			//print the days
+			window.alert(`Can bunk ${daysToBunk} classes.`);
+		} else {
+			let daysToAttend = 0;
+			while (currentPercentage < percentageRequired) {
+				classesAttended += 1;
+				totalClasses += 1;
+				currentPercentage = (classesAttended / totalClasses) * 100;
+				daysToAttend += 1;
+			}
+			//print the days
+			window.alert(`Need to Attend ${daysToAttend} classes.`);
+		}
+	} else {
+		//print error
+		window.alert("Proper Values Please");
+	}
 });
-
-// let a = document.getElementById("classesAttended").value;
-// let b = document.getElementById("totalClasses").value;
-// let c = document.getElementById("percentageRequired").value;
-//---------------------------------------------------------------
-// let d = (a / b) * 100;
-
-// if (a >= 10 && b > 0 && 50 <= c <= 90) {
-// 	let d = (a / b) * 100;
-
-// 	if (d >= c) {
-// 		counter = -1;
-// 		while (d >= c) {
-// 			b += 1;
-// 			d = (a / b) * 100;
-// 			counter += 1;
-// 		}
-// 		//console.log or print => counter
-// 	} else {
-// 		counter = 0;
-// 		while (d < c) {
-// 			a += 1;
-// 			b += 1;
-// 			d = (a / b) * 100;
-// 			counter += 1;
-// 		}
-// 		//console.log or print => counter
-// 	}
-// } else {
-// 	//console.log or print => please enter proper values
-// }
