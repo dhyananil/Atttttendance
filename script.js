@@ -1,4 +1,5 @@
 const calculateButton = document.getElementById("calculate");
+const mainResult = document.getElementById("mainResult");
 
 calculateButton.addEventListener("click", () => {
 	let classesAttended = parseInt(document.getElementById("classesAttended").value);
@@ -7,7 +8,7 @@ calculateButton.addEventListener("click", () => {
 
 	let currentPercentage = (classesAttended / totalClasses) * 100;
 
-	if (classesAttended >= 1 && totalClasses > 0 && percentageRequired >= 60 && percentageRequired <= 90) {
+	if (classesAttended >= 0 && classesAttended <= totalClasses && percentageRequired >= 60 && percentageRequired <= 90) {
 		if (currentPercentage >= percentageRequired) {
 			let daysToBunk = -1;
 			while (currentPercentage >= percentageRequired) {
@@ -15,8 +16,7 @@ calculateButton.addEventListener("click", () => {
 				currentPercentage = (classesAttended / totalClasses) * 100;
 				daysToBunk += 1;
 			}
-			//print the days
-			window.alert(`Can bunk ${daysToBunk} classes.`);
+			mainResult.textContent = `You can bunk ${daysToBunk} classes.`;
 		} else {
 			let daysToAttend = 0;
 			while (currentPercentage < percentageRequired) {
@@ -25,11 +25,13 @@ calculateButton.addEventListener("click", () => {
 				currentPercentage = (classesAttended / totalClasses) * 100;
 				daysToAttend += 1;
 			}
-			//print the days
-			window.alert(`Need to Attend ${daysToAttend} classes.`);
+			// window.alert(`Need to Attend ${daysToAttend} classes.`);
+			mainResult.textContent = `Need to Attend ${daysToAttend} classes.`;
 		}
 	} else {
-		//print error
-		window.alert("Proper Values Please");
+		// window.alert("Proper Values Please");
+		mainResult.textContent = `Please Enter Proper Values.`;
 	}
 });
+
+//TODO: switch to inner.HTML and change lines 19, 29 and 33.
