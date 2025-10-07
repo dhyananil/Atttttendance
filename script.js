@@ -8,15 +8,15 @@ calculateButton.addEventListener("click", () => {
 
 	let currentPercentage = (classesAttended / totalClasses) * 100;
 
-	if (classesAttended >= 0 && classesAttended <= totalClasses && percentageRequired >= 60 && percentageRequired <= 90) {
+	if (classesAttended >= 0 && totalClasses > 0 && classesAttended <= totalClasses && percentageRequired >= 60 && percentageRequired <= 90) {
 		if (currentPercentage >= percentageRequired) {
-			let daysToBunk = -1;
+			let daysToMiss = -1;
 			while (currentPercentage >= percentageRequired) {
 				totalClasses += 1;
 				currentPercentage = (classesAttended / totalClasses) * 100;
-				daysToBunk += 1;
+				daysToMiss += 1;
 			}
-			mainResult.textContent = `You can bunk ${daysToBunk} classes.`;
+			mainResult.innerHTML = `<p>You can miss <span>${daysToMiss}</span> classes and still maintain <span>${percentageRequired}% attendance</span>.</p>`;
 		} else {
 			let daysToAttend = 0;
 			while (currentPercentage < percentageRequired) {
@@ -25,13 +25,12 @@ calculateButton.addEventListener("click", () => {
 				currentPercentage = (classesAttended / totalClasses) * 100;
 				daysToAttend += 1;
 			}
-			// window.alert(`Need to Attend ${daysToAttend} classes.`);
-			mainResult.textContent = `Need to Attend ${daysToAttend} classes.`;
+			mainResult.innerHTML = `<p>Need to Attend <span>${daysToAttend}</span> classes to maintain <span>${percentageRequired}% attendance</span>.</p>`;
 		}
 	} else {
-		// window.alert("Proper Values Please");
-		mainResult.textContent = `Please Enter Proper Values.`;
+		mainResult.innerHTML = `<p>Please Enter <span>Proper</span> Values.</p>`;
 	}
 });
 
-//TODO: switch to inner.HTML and change lines 19, 29 and 33.
+//TODO:
+// correct grammar in the inner.html and switch from classes to class when its 1 or vise versa.
