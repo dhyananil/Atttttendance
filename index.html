@@ -16,15 +16,16 @@
 
 		<div id="mainContent">
 			<label for="totalClasses">Total Classes Held:</label>
-			<input id="totalClasses" type="number" min="0" />
+			<input id="totalClasses" type="number" min="0" max="100" step="1" placeholder="e.g. 10" />
 
 			<label for="classesAttended">Classes Attended:</label>
-			<input id="classesAttended" type="number" min="1" />
+			<input id="classesAttended" type="number" min="1" max="100" step="1" placeholder="e.g. 8" />
 
 			<label for="percentageRequired">Percentage Required:</label>
-			<input id="percentageRequired" type="number" min="60" max="90" />
+			<input id="percentageRequired" type="number" min="60" max="90" step="5" placeholder="e.g. 75" />
 
-			<button id="calculate">Calculate</button>
+			<button id="mainCalculate">Calculate</button>
+			<button id="resetButton">Reset</button>
 
 			<div id="mainResult"></div>
 		</div>
@@ -35,8 +36,6 @@
 
 <!--
 Todo:
-	1) Add attributes like title in input or edit css to include placeholder,
-	   to let users know what is the proper value to enter in a range.
-	2) Add nav bar to make it like a full-fledged website.
-	3) Add links and buttons to socials.
+	1) Add nav bar to make it like a full-fledged website.
+	2) Add links and buttons to socials.
 -->
