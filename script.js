@@ -1,3 +1,7 @@
+const calculateButton = document.getElementById("mainCalculate");
+const mainResult = document.getElementById("mainResult");
+const resetButton = document.getElementById("resetButton");
+
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
 		return `You can't miss any classes or the ${percentageRequired}% attendance percentage drops.`;
@@ -8,8 +12,11 @@ function resultMessage(days, percentageRequired, action = "miss") {
 	}
 }
 
-const calculateButton = document.getElementById("calculate");
-const mainResult = document.getElementById("mainResult");
+resetButton.addEventListener("click", () => {
+	document.getElementById("totalClasses").value = "";
+	document.getElementById("classesAttended").value = "";
+	document.getElementById("percentageRequired").value = "";
+});
 
 calculateButton.addEventListener("click", () => {
 	let totalClasses = parseInt(document.getElementById("totalClasses").value);
@@ -18,7 +25,7 @@ calculateButton.addEventListener("click", () => {
 
 	let currentPercentage = (classesAttended / totalClasses) * 100;
 
-	if (classesAttended >= 0 && totalClasses > 0 && classesAttended <= totalClasses && percentageRequired >= 60 && percentageRequired <= 90) {
+	if (classesAttended >= 0 && classesAttended <= totalClasses && totalClasses <= 100 && percentageRequired >= 60 && percentageRequired <= 90) {
 		if (currentPercentage >= percentageRequired) {
 			let daysToMiss = -1;
 			while (currentPercentage >= percentageRequired) {
