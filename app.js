@@ -4,7 +4,7 @@ const resetButton = document.getElementById("resetButton");
 
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
-		return `You can't miss any classes or the ${percentageRequired}% attendance percentage drops.`;
+		return `You can’t miss any classes, or your attendance will drop below ${percentageRequired}%.`;
 	} else if (days === 1) {
 		return action === "miss" ? `You can miss 1 class and still maintain ${percentageRequired}% attendance.` : `You need to attend 1 class to maintain ${percentageRequired}% attendance.`;
 	} else {
