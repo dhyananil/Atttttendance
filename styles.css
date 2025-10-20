@@ -6,3 +6,50 @@ body {
 	font-family: "Poppins", sans-serif;
 	font-style: normal;
 }
+
+nav {
+	display: flex;
+	justify-content: space-between; /* logo left, links right */
+	align-items: center; /* vertical alignment */
+	padding: 10px 200px;
+	padding-top: 40px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+nav ul {
+	display: flexbox;
+	list-style: none;
+	font-family: "Tac One", sans-serif;
+	font-size: 50px;
+	gap: 0px; /* spacing between links */
+	padding: 0px;
+}
+
+nav ul li a {
+	font-weight: 500;
+	text-decoration: none;
+	/* color: black; */
+}
+
+#navbarAtttttendance {
+	color: black;
+}
+#navbarAtttttendance:hover {
+	color: #7e7e7e;
+}
+#navbarAbout {
+	color: black;
+}
+#navbarGithub {
+	color: #7e7e7e;
+}
+#navbarGithub:hover {
+	color: black;
+}
+
+hr {
+	color: black;
+	opacity: 50%;
+	width: 75%;
+}
