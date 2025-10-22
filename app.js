@@ -48,8 +48,3 @@ calculateButton.addEventListener("click", () => {
 		mainResult.innerHTML = `Please enter proper values.`;
 	}
 });
-
-/*
-Todo:
-	Add html elements to make it easier to work with css in lines - 3, 5, 7, 41.
-*/
