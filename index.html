@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,47 +22,52 @@
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet" />
 
-		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 
 	<body>
-		<nav>
-			<a href="https://atttttendance.vercel.app"><img src="images/png/logo.png" alt="Atttttendance Logo." width="200" id="logoImage" /></a>
-			<ul>
-				<li><a id="navbarAtttttendance" href="https://atttttendance.vercel.app">Atttttendance</a></li>
-				<li><a id="navbarGithub" href="https://www.github.com/dhyananil" target="_blank">GitHub</a></li>
-				<li><a id="navbarAbout" href="#about">About</a></li>
-			</ul>
-		</nav>
-		<!-- <hr /> -->
+		<header>
+			<a id="navbarLogo" href="https://atttttendance.vercel.app">
+				<img src="images/png/logoMain.png" alt="logo of Atttttendance by Dhyan Anil" id="logoImage" />
+			</a>
+			<nav id="mainNavigation">
+				<ul type="none">
+					<li>
+						<a id="navbarAtttttendance" href="https://atttttendance.vercel.app">Atttttendance</a>
+					</li>
+					<li>
+						<a id="navbarGithub" href="https://www.github.com/dhyananil/Atttttendance" target="_blank">GitHub</a>
+					</li>
+				</ul>
+				<button id="navbarMenuButton"><img id="menuImage" src="images/png/menuOpen.png" alt="open hamburger menu button" /></button>
+			</nav>
+		</header>
 
-		<section id="main">
-			<div id="mainHeading">
-				<h1>Calculate your <span>Attendance</span></h1>
-			</div>
-
+		<hr />
+		<section id="mainPage">
+			<div id="mainHeading"><span>Calculate your Attendance</span></div>
 			<div id="mainContent">
 				<label for="totalClasses">Total Classes Held:</label>
-				<input id="totalClasses" type="number" min="0" max="100" step="1" />
+				<div class="fieldGroup">
+					<input id="totalClasses" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="0 - 100" />
+					<label for="classesAttended">Classes Attended:</label>
+				</div>
 
-				<label for="classesAttended">Classes Attended:</label>
-				<input id="classesAttended" type="number" min="1" max="100" step="1" />
+				<div class="fieldGroup">
+					<input id="classesAttended" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="0 - 100" />
+					<label for="percentageRequired">Percentage Required:</label>
+				</div>
 
-				<label for="percentageRequired">Percentage Required:</label>
-				<input id="percentageRequired" type="number" min="60" max="90" step="5" />
+				<div class="fieldGroup">
+					<input id="percentageRequired" type="number" inputmode="numeric" min="60" max="90" step="5" placeholder="60% - 90%" />
+					<button id="mainCalculate">Calculate</button>
+				</div>
 
-				<button id="mainCalculate">Calculate</button>
 				<button id="resetButton">Reset</button>
-
-				<div id="mainResult"></div>
 			</div>
-		</section>
 
-		<section id="about">
-			<a href="#main"><img src="images/pfp.png" alt="Dhyan Anil's profile picture." id="aboutImage" /></a>
-			<p id="aboutDescription">Lorem ipsum.</p>
+			<div id="mainResult"></div>
 		</section>
-
 		<script src="app.js"></script>
 	</body>
 </html>
