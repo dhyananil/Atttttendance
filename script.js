@@ -15,7 +15,7 @@ function resultMessage(days, percentageRequired, action = "miss") {
 }
 
 resetButton.addEventListener("click", () => {
-	window.scrollTo({ top: 0, behavior: "smooth" });
+	mainResult.style.color = "#606060";
 
 	document.getElementById("totalClasses").value = "";
 	document.getElementById("classesAttended").value = "";
@@ -25,10 +25,12 @@ resetButton.addEventListener("click", () => {
 		input.classList.remove("input-error");
 	});
 
-	mainResult.style.color = "#606060";
+	window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 calculateButton.addEventListener("click", () => {
+	mainResult.style.color = "#dfdfdf";
+
 	const totalInput = document.getElementById("totalClasses");
 	const attendedInput = document.getElementById("classesAttended");
 	const percentInput = document.getElementById("percentageRequired");
