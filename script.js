@@ -91,7 +91,9 @@ menuButton.addEventListener("click", () => {
 	navLinks.classList.toggle("open");
 	if (navLinks.classList.contains("open")) {
 		menuImage.src = "images/png/menuClose.png";
+		document.documentElement.style.overflowY = "hidden";
 	} else {
 		menuImage.src = "images/png/menuOpen.png";
+		document.documentElement.style.overflowY = "";
 	}
 });
