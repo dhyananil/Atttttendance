@@ -108,7 +108,6 @@ header a img {
 @media (max-width: 500px) {
 	#navbarMenuButton {
 		display: flex;
-		justify-content: right;
 		transition: all 200ms;
 	}
 
@@ -135,10 +134,9 @@ header a img {
 		flex-direction: column;
 
 		align-items: left;
-		justify-content: top;
+		justify-content: center;
 
 		gap: 3rem;
-		padding-block: 30vh;
 		padding-inline: 16px;
 
 		transition: all 200ms;
