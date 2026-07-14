@@ -23,6 +23,8 @@ function applyTheme(isDark) {
 	logoImage.src = isDark ? "images/png/darkTheme/logoMain.png" : "images/png/lightTheme/logoMain.png";
 	themeImage.src = isDark ? "images/png/darkTheme/themeButton.png" : "images/png/lightTheme/themeButton.png";
 	menuImage.src = isDark ? "images/png/darkTheme/menuOpen.png" : "images/png/lightTheme/menuOpen.png";
+
+	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultColor");
 }
 
 applyTheme(savedTheme ? savedTheme === "dark" : colorScheme.matches);
@@ -36,20 +38,6 @@ function resultMessage(days, percentageRequired, action = "miss") {
 		return action === "miss" ? `You <strong style="font-size: 1.25rem"> can miss ${days} </strong> classes and still <strong style="font-size: 1.25rem"> maintain ${percentageRequired}% </strong> attendance` : `You <strong style="font-size: 1.25rem"> need to attend ${days} </strong> classes to <strong style="font-size: 1.25rem"> maintain ${percentageRequired}% </strong> attendance`;
 	}
 }
-
-resetButton.addEventListener("click", () => {
-	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultStyle");
-
-	document.getElementById("totalClasses").value = "";
-	document.getElementById("classesAttended").value = "";
-	document.getElementById("percentageRequired").value = "";
-
-	document.querySelectorAll("input").forEach((input) => {
-		input.classList.remove("input-error");
-	});
-
-	window.scrollTo({ top: 0, behavior: "smooth" });
-});
 
 calculateButton.addEventListener("click", () => {
 	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultColor");
@@ -108,6 +96,20 @@ calculateButton.addEventListener("click", () => {
 	}
 
 	mainResult.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+resetButton.addEventListener("click", () => {
+	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultStyle");
+
+	document.getElementById("totalClasses").value = "";
+	document.getElementById("classesAttended").value = "";
+	document.getElementById("percentageRequired").value = "";
+
+	document.querySelectorAll("input").forEach((input) => {
+		input.classList.remove("input-error");
+	});
+
+	window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 menuButton.addEventListener("click", () => {
