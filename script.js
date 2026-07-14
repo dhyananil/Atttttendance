@@ -1,22 +1,31 @@
-const menuButton = document.getElementById("navbarMenuButton");
 const navLinks = document.querySelector("#mainNavigation ul");
-const calculateButton = document.getElementById("mainCalculate");
-const mainResult = document.getElementById("mainResult");
-const resetButton = document.getElementById("resetButton");
+const themeButton = document.getElementById("themeButton");
+const menuButton = document.getElementById("menuButton");
+
+const logoImage = document.getElementById("logoImage");
+const themeImage = document.getElementById("themeImage");
+const menuImage = document.getElementById("menuImage");
+
 const totalClassesInput = document.getElementById("totalClasses");
 const classesAttendedInput = document.getElementById("classesAttended");
 const percentageRequiredInput = document.getElementById("percentageRequired");
 
+const calculateButton = document.getElementById("mainCalculate");
+const resetButton = document.getElementById("resetButton");
+const mainResult = document.getElementById("mainResult");
+
 const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const savedTheme = localStorage.getItem("theme");
 
 function applyTheme(isDark) {
 	document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
 
 	logoImage.src = isDark ? "images/png/darkTheme/logoMain.png" : "images/png/lightTheme/logoMain.png";
+	themeImage.src = isDark ? "images/png/darkTheme/themeButton.png" : "images/png/lightTheme/themeButton.png";
 	menuImage.src = isDark ? "images/png/darkTheme/menuOpen.png" : "images/png/lightTheme/menuOpen.png";
 }
 
-applyTheme(colorScheme.matches);
+applyTheme(savedTheme ? savedTheme === "dark" : colorScheme.matches);
 
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
@@ -115,6 +124,12 @@ menuButton.addEventListener("click", () => {
 	}
 });
 
+themeButton.addEventListener("click", () => {
+	const isDark = document.documentElement.dataset.theme === "dark";
+	applyTheme(!isDark);
+	localStorage.setItem("theme", !isDark ? "dark" : "light");
+});
+
 totalClassesInput.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
 		classesAttendedInput.focus();
@@ -132,5 +147,7 @@ percentageRequiredInput.addEventListener("keydown", (event) => {
 });
 
 colorScheme.addEventListener("change", (event) => {
-	applyTheme(event.matches);
+	if (!localStorage.getItem("theme")) {
+		applyTheme(event.matches);
+	}
 });
