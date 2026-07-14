@@ -1,3 +1,77 @@
+:root {
+	--bodyBackgroundColor: #f5f5f5;
+	--selectionColor: #dfdfdf;
+	--aTagColor: #202020;
+	--hrBackgroundColor: #dfdfdf;
+	--headerBackgroundColor: #ffffff;
+	--mainNavigationUlBackgroundColor: #202020;
+	--mainNavigationAColor: #dfdfdf;
+	--mainNavigationAFocusColor: #606060;
+	--buttonHoverBorder: #9f9f9f;
+	--buttonHoverColor: #202020;
+	--buttonHoverBackgroundColor: #dfdfdf;
+	--buttonColor: #dfdfdf;
+	--buttonBackgroundColor: #202020;
+	--mainPageColor: #202020;
+	--mainPageBackgroundColor: #f5f5f5;
+	--mainHeadingBackgroundColor: #202020;
+	--mainHeadingBorder: #606060;
+	--mainHeadingColor: #dfdfdf;
+	--mainContentBackgroundColor: #ffffff;
+	--mainContentBorder: #dfdfdf;
+	--mainContentLabelColor: #606060;
+	--mainContentInputBoxShadow: #dfdfdf;
+	--mainContentInputColor: #202020;
+	--mainContentInputBackgroundColor: #ffffff;
+	--mainContentInputFocusBoxShadow: #9f9f9f;
+	--mainContentInputPlaceholderColor: #9f9f9f;
+	--inputErrorBoxShadow: #a34848;
+	--mainContentResetButtonColor: #606060;
+	--mainContentResetButtonBackgroundColor: #f5f5f5;
+	--mainContentResetButtonBorder: #dfdfdf;
+	--mainResultBackgroundColor: #202020;
+	--mainResultBorder: #606060;
+	--mainResultColor: #dfdfdf;
+	--mainResultStyle: #9f9f9f;
+}
+
+[data-theme="dark"] {
+	--bodyBackgroundColor: #202020;
+	--selectionColor: #606060;
+	--aTagColor: #dfdfdf;
+	--hrBackgroundColor: #202020;
+	--headerBackgroundColor: #000000;
+	--mainNavigationUlBackgroundColor: #202020;
+	--mainNavigationAColor: #dfdfdf;
+	--mainNavigationAFocusColor: #9f9f9f;
+	--buttonHoverBorder: #606060;
+	--buttonHoverColor: #dfdfdf;
+	--buttonHoverBackgroundColor: #202020;
+	--buttonColor: #202020;
+	--buttonBackgroundColor: #dfdfdf;
+	--mainPageColor: #dfdfdf;
+	--mainPageBackgroundColor: #202020;
+	--mainHeadingBackgroundColor: #dfdfdf;
+	--mainHeadingBorder: #9f9f9f;
+	--mainHeadingColor: #202020;
+	--mainContentBackgroundColor: #000000;
+	--mainContentBorder: #202020;
+	--mainContentLabelColor: #9f9f9f;
+	--mainContentInputBoxShadow: #202020;
+	--mainContentInputColor: #f5f5f5;
+	--mainContentInputBackgroundColor: #000000;
+	--mainContentInputFocusBoxShadow: #606060;
+	--mainContentInputPlaceholderColor: #606060;
+	--inputErrorBoxShadow: #a34848;
+	--mainContentResetButtonColor: #9f9f9f;
+	--mainContentResetButtonBackgroundColor: #202020;
+	--mainContentResetButtonBorder: #202020;
+	--mainResultBackgroundColor: #dfdfdf;
+	--mainResultBorder: #9f9f9f;
+	--mainResultColor: #202020;
+	--mainResultStyle: #606060;
+}
+
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
@@ -17,12 +91,11 @@ body {
 	overflow-x: hidden;
 	max-width: 100vw;
 
-	color: #202020;
-	background-color: #f5f5f5;
+	background-color: var(--bodyBackgroundColor);
 }
 
 ::selection {
-	background: #dfdfdf;
+	background: var(--selectionColor);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -37,21 +110,21 @@ input[type="number"] {
 }
 
 a {
-	color: #202020;
+	color: var(--aTagColor);
 	text-decoration: none;
 }
 
 hr {
 	border: none;
 	height: 2px;
-	background-color: #dfdfdf;
+	background-color: var(--hrBackgroundColor);
 	margin: 0px;
 }
 
 header {
 	display: flex;
 
-	background-color: #ffffff;
+	background-color: var(--headerBackgroundColor);
 
 	align-items: center;
 	justify-content: space-between;
@@ -118,13 +191,13 @@ header a img {
 		display: none;
 		position: absolute;
 
-		background-color: #202020;
+		background-color: var(--mainNavigationUlBackgroundColor);
 
 		inset: 79.73px 0 0 0;
 	}
 
 	#mainNavigation a {
-		color: #dfdfdf;
+		color: var(--mainNavigationAColor);
 		font-size: 2.5rem;
 	}
 
@@ -153,16 +226,16 @@ header a img {
 
 	#mainNavigation a:hover,
 	#mainNavigation a:focus {
-		color: #606060;
+		color: var(--mainNavigationAFocusColor);
 		outline: none;
 	}
 
 	button:hover {
 		cursor: pointer;
 
-		border: 2px solid #9f9f9f;
-		color: #202020;
-		background-color: #dfdfdf;
+		border: 2px solid var(--buttonHoverBorder);
+		color: var(--buttonHoverColor);
+		background-color: var(--buttonHoverBackgroundColor);
 	}
 }
 
@@ -171,8 +244,8 @@ button {
 	border-radius: 8px;
 
 	font-family: inherit;
-	color: #dfdfdf;
-	background-color: #202020;
+	color: var(--buttonColor);
+	background-color: var(--buttonBackgroundColor);
 
 	width: 80px;
 	height: 25px;
@@ -182,8 +255,8 @@ button {
 }
 
 #mainPage {
-	color: #202020;
-	background-color: #f5f5f5;
+	color: var(--mainPageColor);
+	background-color: var(--mainPageBackgroundColor);
 
 	display: flex;
 	flex-direction: column;
@@ -193,8 +266,8 @@ button {
 }
 
 #mainHeading {
-	background-color: #202020;
-	border: 1px solid #606060;
+	background-color: var(--mainHeadingBackgroundColor);
+	border: 1px solid var(--mainHeadingBorder);
 	border-radius: 8px;
 	box-shadow: none;
 
@@ -203,7 +276,7 @@ button {
 
 	width: min(90vw, 420px);
 
-	color: #dfdfdf;
+	color: var(--mainHeadingColor);
 	text-align: center;
 	line-height: 1.5;
 	word-break: break-word;
@@ -219,8 +292,8 @@ button {
 	display: flex;
 	flex-direction: column;
 
-	background-color: #ffffff;
-	border: 1px solid #dfdfdf;
+	background-color: var(--mainContentBackgroundColor);
+	border: 1px solid var(--mainContentBorder);
 	border-radius: 8px;
 
 	padding: 2rem;
@@ -240,18 +313,18 @@ button {
 #mainContent label {
 	font-size: 0.95rem;
 	font-weight: 500;
-	color: #606060;
+	color: var(--mainContentLabelColor);
 }
 
 #mainContent input {
 	border: none;
 	border-radius: 8px;
-	box-shadow: inset 0 0 0 1px #dfdfdf;
+	box-shadow: inset 0 0 0 1px var(--mainContentInputBoxShadow);
 
 	font-family: inherit;
 	font-size: 1rem;
-	color: #202020;
-	background-color: #ffffff;
+	color: var(--mainContentInputColor);
+	background-color: var(--mainContentInputBackgroundColor);
 
 	padding: 0.65rem 0.85rem;
 	width: 100%;
@@ -261,17 +334,16 @@ button {
 }
 
 #mainContent input:focus {
-	box-shadow: inset 0 0 0 2px #9f9f9f;
+	box-shadow: inset 0 0 0 2px var(--mainContentInputFocusBoxShadow);
 	outline: none;
 }
 
 #mainContent input::placeholder {
-	color: #9f9f9f;
+	color: var(--mainContentInputPlaceholderColor);
 }
 
 .input-error {
-	box-shadow: inset 0 0 0 2px #a34848 !important;
-	background-color: #fff5f5;
+	box-shadow: inset 0 0 0 2px var(--inputErrorBoxShadow) !important;
 }
 
 #mainContent button {
@@ -284,9 +356,9 @@ button {
 }
 
 #mainContent #resetButton {
-	color: #606060;
-	background-color: #f5f5f5;
-	border: 1px solid #dfdfdf;
+	color: var(--mainContentResetButtonColor);
+	background-color: var(--mainContentResetButtonBackgroundColor);
+	border: 1px solid var(--mainContentResetButtonBorder);
 }
 
 #mainResult:empty {
@@ -294,8 +366,8 @@ button {
 }
 
 #mainResult {
-	background-color: #202020;
-	border: 1px solid #606060;
+	background-color: var(--mainResultBackgroundColor);
+	border: 1px solid var(--mainResultBorder);
 	border-radius: 8px;
 	box-shadow: none;
 
@@ -305,7 +377,7 @@ button {
 	width: min(90vw, 420px);
 
 	font-size: 0.95rem;
-	color: #dfdfdf;
+	color: var(--mainResultColor);
 	text-align: center;
 	line-height: 1.5;
 	word-break: break-word;
