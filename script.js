@@ -7,9 +7,20 @@ const totalClassesInput = document.getElementById("totalClasses");
 const classesAttendedInput = document.getElementById("classesAttended");
 const percentageRequiredInput = document.getElementById("percentageRequired");
 
+const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+function applyTheme(isDark) {
+	document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+
+	logoImage.src = isDark ? "images/png/darkTheme/logoMain.png" : "images/png/lightTheme/logoMain.png";
+	menuImage.src = isDark ? "images/png/darkTheme/menuOpen.png" : "images/png/lightTheme/menuOpen.png";
+}
+
+applyTheme(colorScheme.matches);
+
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
-		return `You <strong style="font-size: 1.25rem"> can’t miss any </strong> classes, or your attendance will <strong style="font-size: 1.25rem"> drop </strong> below <strong style="font-size: 1.25rem"> ${percentageRequired}% </strong>`;
+		return `You <strong style="font-size: 1.25rem"> can't miss any </strong> classes, or your attendance will <strong style="font-size: 1.25rem"> drop </strong> below <strong style="font-size: 1.25rem"> ${percentageRequired}% </strong>`;
 	} else if (days === 1) {
 		return action === "miss" ? `You <strong style="font-size: 1.25rem"> can miss 1 </strong> class and still <strong style="font-size: 1.25rem"> maintain ${percentageRequired}% </strong> attendance` : `You <strong style="font-size: 1.25rem"> need to attend 1 </strong> class to <strong style="font-size: 1.25rem"> maintain ${percentageRequired}% </strong> attendance`;
 	} else {
@@ -18,7 +29,7 @@ function resultMessage(days, percentageRequired, action = "miss") {
 }
 
 resetButton.addEventListener("click", () => {
-	mainResult.style.color = "#606060";
+	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultStyle");
 
 	document.getElementById("totalClasses").value = "";
 	document.getElementById("classesAttended").value = "";
@@ -32,7 +43,7 @@ resetButton.addEventListener("click", () => {
 });
 
 calculateButton.addEventListener("click", () => {
-	mainResult.style.color = "#dfdfdf";
+	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultColor");
 
 	const totalInput = document.getElementById("totalClasses");
 	const attendedInput = document.getElementById("classesAttended");
@@ -91,12 +102,15 @@ calculateButton.addEventListener("click", () => {
 });
 
 menuButton.addEventListener("click", () => {
+	const isDark = document.documentElement.dataset.theme === "dark";
+
 	navLinks.classList.toggle("open");
+
 	if (navLinks.classList.contains("open")) {
-		menuImage.src = "images/png/menuClose.png";
+		menuImage.src = isDark ? "images/png/darkTheme/menuClose.png" : "images/png/lightTheme/menuClose.png";
 		document.documentElement.style.overflowY = "hidden";
 	} else {
-		menuImage.src = "images/png/menuOpen.png";
+		menuImage.src = isDark ? "images/png/darkTheme/menuOpen.png" : "images/png/lightTheme/menuOpen.png";
 		document.documentElement.style.overflowY = "";
 	}
 });
@@ -115,4 +129,8 @@ percentageRequiredInput.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
 		calculateButton.click();
 	}
+});
+
+colorScheme.addEventListener("change", (event) => {
+	applyTheme(event.matches);
 });
