@@ -24,7 +24,7 @@ function applyTheme(isDark) {
 	themeImage.src = isDark ? "images/png/darkTheme/themeButton.png" : "images/png/lightTheme/themeButton.png";
 	menuImage.src = isDark ? "images/png/darkTheme/menuOpen.png" : "images/png/lightTheme/menuOpen.png";
 
-	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultColor");
+	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultStyle");
 }
 
 applyTheme(savedTheme ? savedTheme === "dark" : colorScheme.matches);
