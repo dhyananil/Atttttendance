@@ -3,6 +3,9 @@ const navLinks = document.querySelector("#mainNavigation ul");
 const calculateButton = document.getElementById("mainCalculate");
 const mainResult = document.getElementById("mainResult");
 const resetButton = document.getElementById("resetButton");
+const totalClassesInput = document.getElementById("totalClasses");
+const classesAttendedInput = document.getElementById("classesAttended");
+const percentageRequiredInput = document.getElementById("percentageRequired");
 
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
@@ -45,7 +48,7 @@ calculateButton.addEventListener("click", () => {
 
 	let isValid = true;
 
-	if (!totalClasses || totalClasses <= 0 || totalClasses > 100) {
+	if (!totalClasses || totalClasses <= 0 || totalClasses > 5000) {
 		totalInput.classList.add("input-error");
 		isValid = false;
 	}
@@ -95,5 +98,21 @@ menuButton.addEventListener("click", () => {
 	} else {
 		menuImage.src = "images/png/menuOpen.png";
 		document.documentElement.style.overflowY = "";
+	}
+});
+
+totalClassesInput.addEventListener("keydown", (event) => {
+	if (event.key === "Enter") {
+		classesAttendedInput.focus();
+	}
+});
+classesAttendedInput.addEventListener("keydown", (event) => {
+	if (event.key === "Enter") {
+		percentageRequiredInput.focus();
+	}
+});
+percentageRequiredInput.addEventListener("keydown", (event) => {
+	if (event.key === "Enter") {
+		calculateButton.click();
 	}
 });
