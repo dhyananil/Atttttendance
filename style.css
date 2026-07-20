@@ -36,7 +36,7 @@
 }
 
 [data-theme="dark"] {
-	--bodyBackgroundColor: #202020;
+	--bodyBackgroundColor: #0a0a0a;
 	--selectionColor: #606060;
 	--aTagColor: #dfdfdf;
 	--hrBackgroundColor: #202020;
@@ -50,7 +50,7 @@
 	--buttonColor: #202020;
 	--buttonBackgroundColor: #dfdfdf;
 	--mainPageColor: #dfdfdf;
-	--mainPageBackgroundColor: #202020;
+	--mainPageBackgroundColor: #0a0a0a;
 	--mainHeadingBackgroundColor: #dfdfdf;
 	--mainHeadingBorder: #9f9f9f;
 	--mainHeadingColor: #202020;
