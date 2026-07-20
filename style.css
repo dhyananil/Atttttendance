@@ -333,10 +333,6 @@ button {
 	gap: 2rem;
 }
 
-#mainContent {
-	margin-bottom: 3rem;
-}
-
 #mainContent label {
 	font-size: 0.95rem;
 	font-weight: 500;
@@ -399,7 +395,7 @@ button {
 	box-shadow: none;
 
 	padding: 1.25rem 2rem;
-	margin-bottom: 3rem;
+	/* margin-bottom: 3rem; */
 
 	width: min(90vw, 420px);
 
@@ -413,6 +409,7 @@ button {
 
 footer {
 	color: var(--footerTextColor);
+	margin-top: 3rem;
 }
 
 /*
