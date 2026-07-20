@@ -33,6 +33,7 @@
 	--mainResultBorder: #606060;
 	--mainResultColor: #dfdfdf;
 	--mainResultStyle: #9f9f9f;
+	--footerTextColor: #9f9f9f;
 }
 
 [data-theme="dark"] {
@@ -70,6 +71,7 @@
 	--mainResultBorder: #9f9f9f;
 	--mainResultColor: #202020;
 	--mainResultStyle: #606060;
+	--footerTextColor: #606060;
 }
 
 html {
@@ -331,6 +333,10 @@ button {
 	gap: 2rem;
 }
 
+#mainContent {
+	margin-bottom: 3rem;
+}
+
 #mainContent label {
 	font-size: 0.95rem;
 	font-weight: 500;
@@ -403,6 +409,10 @@ button {
 	line-height: 1.5;
 	word-break: break-word;
 	overflow-wrap: break-word;
+}
+
+footer {
+	color: var(--footerTextColor);
 }
 
 /*
