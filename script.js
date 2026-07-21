@@ -15,7 +15,6 @@ const resetButton = document.getElementById("resetButton");
 const mainResult = document.getElementById("mainResult");
 
 const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
-const savedTheme = localStorage.getItem("theme");
 
 function applyTheme(isDark) {
 	document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
@@ -27,7 +26,7 @@ function applyTheme(isDark) {
 	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultStyle");
 }
 
-applyTheme(savedTheme ? savedTheme === "dark" : colorScheme.matches);
+applyTheme(colorScheme.matches);
 
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
@@ -129,7 +128,6 @@ menuButton.addEventListener("click", () => {
 themeButton.addEventListener("click", () => {
 	const isDark = document.documentElement.dataset.theme === "dark";
 	applyTheme(!isDark);
-	localStorage.setItem("theme", !isDark ? "dark" : "light");
 });
 
 totalClassesInput.addEventListener("keydown", (event) => {
@@ -149,7 +147,5 @@ percentageRequiredInput.addEventListener("keydown", (event) => {
 });
 
 colorScheme.addEventListener("change", (event) => {
-	if (!localStorage.getItem("theme")) {
-		applyTheme(event.matches);
-	}
+	applyTheme(event.matches);
 });
