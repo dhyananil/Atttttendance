@@ -407,5 +407,6 @@ button {
 }
 
 footer {
+	text-align: center;
 	color: var(--footerTextColor);
 }
