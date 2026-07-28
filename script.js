@@ -28,6 +28,39 @@ function applyTheme(isDark) {
 
 applyTheme(colorScheme.matches);
 
+function validateInput(input) {
+	let value = parseFloat(input.value);
+	let isValid = true;
+
+	input.classList.remove("input-error");
+
+	if (input.id === "totalClasses") {
+		if (!value || value < 1 || value > 5000) {
+			isValid = false;
+		}
+	}
+
+	if (input.id === "classesAttended") {
+		let totalClasses = parseFloat(totalClassesInput.value);
+
+		if (isNaN(totalClasses) || isNaN(value) || value < 0 || value > totalClasses) {
+			isValid = false;
+		}
+	}
+
+	if (input.id === "percentageRequired") {
+		if (!value || value < 60 || value > 90) {
+			isValid = false;
+		}
+	}
+
+	if (!isValid) {
+		input.classList.add("input-error");
+	}
+
+	return isValid;
+}
+
 function resultMessage(days, percentageRequired, action = "miss") {
 	if (days === 0) {
 		return `You <strong style="font-size: 1.25rem"> can't miss any </strong> classes, or your attendance will <strong style="font-size: 1.25rem"> drop </strong> below <strong style="font-size: 1.25rem"> ${percentageRequired}% </strong>`;
@@ -41,32 +74,16 @@ function resultMessage(days, percentageRequired, action = "miss") {
 calculateButton.addEventListener("click", () => {
 	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultColor");
 
-	const totalInput = document.getElementById("totalClasses");
-	const attendedInput = document.getElementById("classesAttended");
-	const percentInput = document.getElementById("percentageRequired");
-
-	let totalClasses = parseInt(totalInput.value);
-	let classesAttended = parseInt(attendedInput.value);
-	let percentageRequired = parseFloat(percentInput.value);
-
-	document.querySelectorAll("input").forEach((input) => {
-		input.classList.remove("input-error");
-	});
+	let totalClasses = parseInt(totalClassesInput.value);
+	let classesAttended = parseInt(classesAttendedInput.value);
+	let percentageRequired = parseFloat(percentageRequiredInput.value);
 
 	let isValid = true;
 
-	if (!totalClasses || totalClasses <= 0 || totalClasses > 5000) {
-		totalInput.classList.add("input-error");
-		isValid = false;
-	}
-	if (classesAttended < 0 || classesAttended > totalClasses || isNaN(classesAttended)) {
-		attendedInput.classList.add("input-error");
-		isValid = false;
-	}
-	if (!percentageRequired || percentageRequired < 60 || percentageRequired > 90) {
-		percentInput.classList.add("input-error");
-		isValid = false;
-	}
+	if (!validateInput(totalClassesInput)) isValid = false;
+	if (!validateInput(classesAttendedInput)) isValid = false;
+	if (!validateInput(percentageRequiredInput)) isValid = false;
+
 	if (!isValid) {
 		mainResult.innerHTML = `Please enter <strong style="font-size: 1.25rem"> proper </strong> values`;
 		mainResult.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -77,20 +94,24 @@ calculateButton.addEventListener("click", () => {
 
 	if (currentPercentage >= percentageRequired) {
 		let daysToMiss = -1;
+
 		while (currentPercentage >= percentageRequired) {
 			totalClasses += 1;
 			currentPercentage = (classesAttended / totalClasses) * 100;
 			daysToMiss += 1;
 		}
+
 		mainResult.innerHTML = resultMessage(daysToMiss, percentageRequired, "miss");
 	} else {
 		let daysToAttend = 0;
+
 		while (currentPercentage < percentageRequired) {
 			classesAttended += 1;
 			totalClasses += 1;
 			currentPercentage = (classesAttended / totalClasses) * 100;
 			daysToAttend += 1;
 		}
+
 		mainResult.innerHTML = resultMessage(daysToAttend, percentageRequired, "attend");
 	}
 
@@ -100,9 +121,9 @@ calculateButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
 	mainResult.style.color = getComputedStyle(document.documentElement).getPropertyValue("--mainResultStyle");
 
-	document.getElementById("totalClasses").value = "";
-	document.getElementById("classesAttended").value = "";
-	document.getElementById("percentageRequired").value = "";
+	totalClassesInput.value = "";
+	classesAttendedInput.value = "";
+	percentageRequiredInput.value = "";
 
 	document.querySelectorAll("input").forEach((input) => {
 		input.classList.remove("input-error");
@@ -127,21 +148,39 @@ menuButton.addEventListener("click", () => {
 
 themeButton.addEventListener("click", () => {
 	const isDark = document.documentElement.dataset.theme === "dark";
+
 	applyTheme(!isDark);
+});
+
+totalClassesInput.addEventListener("blur", () => {
+	validateInput(totalClassesInput);
+});
+
+classesAttendedInput.addEventListener("blur", () => {
+	validateInput(classesAttendedInput);
+});
+
+percentageRequiredInput.addEventListener("blur", () => {
+	validateInput(percentageRequiredInput);
 });
 
 totalClassesInput.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
+		validateInput(totalClassesInput);
 		classesAttendedInput.focus();
 	}
 });
+
 classesAttendedInput.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
+		validateInput(classesAttendedInput);
 		percentageRequiredInput.focus();
 	}
 });
+
 percentageRequiredInput.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
+		validateInput(percentageRequiredInput);
 		calculateButton.click();
 	}
 });
