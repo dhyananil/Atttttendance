@@ -1,6 +1,6 @@
 :root {
 	--bodyBackgroundColor: #f5f5f5;
-	--selectionColor: #dfdfdf;
+	--selectionColor: #808080;
 	--aTagColor: #202020;
 	--hrBackgroundColor: #dfdfdf;
 	--headerBackgroundColor: #ffffff;
@@ -40,7 +40,7 @@
 
 [data-theme="dark"] {
 	--bodyBackgroundColor: #0a0a0a;
-	--selectionColor: #606060;
+	--selectionColor: #808080;
 	--aTagColor: #dfdfdf;
 	--hrBackgroundColor: #202020;
 	--headerBackgroundColor: #000000;
