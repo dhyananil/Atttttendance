@@ -264,6 +264,10 @@ header a img {
 		outline: none;
 	}
 
+	#mainHeading:hover {
+		cursor: default;
+	}
+
 	button:hover {
 		cursor: pointer;
 		border: 2px solid var(--buttonHoverBorder);
