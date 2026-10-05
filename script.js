@@ -16,6 +16,8 @@ const mainResult = document.getElementById("mainResult");
 
 const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
+totalClassesInput.focus();
+
 function applyTheme(isDark) {
 	document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
 
