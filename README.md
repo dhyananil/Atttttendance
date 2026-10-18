@@ -28,4 +28,4 @@ It started as a learning exercise and evolved into a polished tool with a clean,
 
 ## Preview
 
-https://github.com/user-attachments/assets/65495d93-9f94-4145-9963-2d2eb6bca419
+https://github.com/user-attachments/assets/444c4ca6-5ec6-4b33-94f6-02814adb0c44
