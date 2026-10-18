@@ -25,3 +25,7 @@ It started as a learning exercise and evolved into a polished tool with a clean,
 - Built with vanilla HTML, CSS, and JavaScript
 - Focused on simplicity and performance
 - Designed to be lightweight and responsive
+
+## Preview
+
+https://github.com/user-attachments/assets/1eec97b0-8a20-4c59-aaa9-39e1fdc9b5f5
