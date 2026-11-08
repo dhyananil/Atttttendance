@@ -1,6 +1,7 @@
 :root {
 	--bodyBackgroundColor: #f5f5f5;
-	--selectionColor: #808080;
+	--selectionBackgroundColor: #808080;
+	--selectionColor: #dfdfdf;
 	--aTagColor: #202020;
 	--headerBackgroundColor: #ffffff;
 	--headerBorderBackgroundColor: #dfdfdf;
@@ -41,7 +42,8 @@
 
 [data-theme="dark"] {
 	--bodyBackgroundColor: #0a0a0a;
-	--selectionColor: #808080;
+	--selectionBackgroundColor: #808080;
+	--selectionColor: #202020;
 	--aTagColor: #dfdfdf;
 	--headerBackgroundColor: #000000;
 	--headerBorderBackgroundColor: #202020;
@@ -101,7 +103,8 @@ body {
 }
 
 ::selection {
-	background: var(--selectionColor);
+	background-color: var(--selectionBackgroundColor);
+	color: var(--selectionColor);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
