@@ -13,6 +13,7 @@ const percentageRequiredInput = document.getElementById("percentageRequired");
 const calculateButton = document.getElementById("mainCalculate");
 const resetButton = document.getElementById("resetButton");
 const mainResult = document.getElementById("mainResult");
+const tiltCard = document.querySelector(".tilt-card");
 
 const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -188,3 +189,38 @@ percentageRequiredInput.addEventListener("keydown", (event) => {
 colorScheme.addEventListener("change", (event) => {
 	applyTheme(event.matches);
 });
+
+const maxTilt = 2;
+const ease = 0.04;
+const returnEase = 0.04;
+let currentEase = ease;
+
+let targetX = 0;
+let targetY = 0;
+let currentX = 0;
+let currentY = 0;
+
+tiltCard.addEventListener("mousemove", (event) => {
+	const { left, top, width, height } = tiltCard.getBoundingClientRect();
+
+	targetX = (0.5 - (event.clientY - top) / height) * maxTilt * 2;
+	targetY = ((event.clientX - left) / width - 0.5) * maxTilt * 2;
+
+	currentEase = ease;
+});
+
+tiltCard.addEventListener("mouseleave", () => {
+	currentEase = returnEase;
+	targetX = 0;
+	targetY = 0;
+});
+
+function animateTilt() {
+	currentX += (targetX - currentX) * currentEase;
+	currentY += (targetY - currentY) * currentEase;
+
+	tiltCard.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(3)}deg) rotateY(${currentY.toFixed(3)}deg)`;
+	requestAnimationFrame(animateTilt);
+}
+
+animateTilt();
