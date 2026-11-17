@@ -191,8 +191,8 @@ colorScheme.addEventListener("change", (event) => {
 });
 
 const maxTilt = 2.5;
-const ease = 0.04;
-const returnEase = 0.04;
+const ease = 0.05;
+const returnEase = 0.05;
 let currentEase = ease;
 
 let targetX = 0;
