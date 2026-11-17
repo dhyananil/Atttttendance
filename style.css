@@ -156,7 +156,7 @@ header {
 
 header a img {
 	max-width: 3.25rem;
-	transition: all 200ms;
+	transition: all 250ms ease !important;
 }
 
 #mainNavigation {
@@ -174,12 +174,12 @@ header a img {
 	margin: 0;
 	padding: 0;
 
-	transition: all 200ms;
+	transition: all 250ms ease !important;
 }
 
 #mainNavigation a {
 	font-size: clamp(1.5rem, 1.367rem + 0.426vw, 1.75rem);
-	transition: all 200ms;
+	transition: all 250ms ease !important;
 }
 
 #themeButton {
@@ -196,6 +196,8 @@ header a img {
 #themeButton img {
 	-webkit-tap-highlight-color: transparent;
 	height: 100%;
+
+	transition: all 200ms ease !important;
 }
 
 #menuButton {
@@ -214,7 +216,7 @@ header a img {
 @media (max-width: 573px) {
 	#menuButton {
 		display: flex;
-		transition: all 200ms;
+		transition: all 250ms ease !important;
 	}
 
 	#menuButton img {
@@ -246,7 +248,7 @@ header a img {
 		gap: 3rem;
 
 		background-color: var(--mainNavigationUlBackgroundColor);
-		transition: all 200ms;
+		transition: all 250ms ease !important;
 	}
 	#mainPage {
 		min-height: calc(100vh - var(--header-height));
@@ -301,7 +303,7 @@ button {
 	color: var(--buttonColor);
 	background-color: var(--buttonBackgroundColor);
 
-	transition: all 200ms;
+	transition: all 250ms ease !important;
 	user-select: none;
 }
 
@@ -357,7 +359,7 @@ button {
 	border: 1px solid var(--mainContentBorder);
 	border-radius: 8px;
 
-	transition: all 200ms;
+	transition: all 250ms ease !important;
 }
 
 .fieldGroup {
@@ -386,7 +388,7 @@ button {
 	color: var(--mainContentInputColor);
 	background-color: var(--mainContentInputBackgroundColor);
 
-	transition: all 200ms;
+	transition: all 250ms ease !important;
 }
 
 #mainContent input:focus {
@@ -438,6 +440,8 @@ button {
 	line-height: 1.5;
 	word-break: break-word;
 	overflow-wrap: break-word;
+
+	transition: all 250ms ease !important;
 }
 
 footer {
