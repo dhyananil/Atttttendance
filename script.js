@@ -190,7 +190,7 @@ colorScheme.addEventListener("change", (event) => {
 	applyTheme(event.matches);
 });
 
-const maxTilt = 2;
+const maxTilt = 2.5;
 const ease = 0.04;
 const returnEase = 0.04;
 let currentEase = ease;
